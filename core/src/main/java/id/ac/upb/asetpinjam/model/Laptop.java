@@ -25,5 +25,8 @@ public class Laptop extends Aset {
         return JenisAset.LAPTOP;
     }
 
-    // TODO minggu 4: override hitungDenda(int).
+        @Override
+    public long hitungDenda(int hariTerlambat) {
+        return dendaDasar(hariTerlambat, 2);
+    }
 }

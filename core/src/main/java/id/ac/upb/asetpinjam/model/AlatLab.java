@@ -28,5 +28,8 @@ public class AlatLab extends Aset {
         return JenisAset.ALAT_LAB;
     }
 
-    // TODO minggu 4: override hitungDenda(int).
+       @Override
+    public long hitungDenda(int hariTerlambat) {
+        return dendaDasar(hariTerlambat, 4);
+    }
 }
