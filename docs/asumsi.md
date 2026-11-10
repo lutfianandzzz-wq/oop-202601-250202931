@@ -64,3 +64,10 @@ Varian saya (NIM 250202931, digit terakhir 1): tarif denda Rp 7.500 per hari, ba
 - Alasan: Lebih sederhana, dan data tidak berubah diam-diam tanpa sepengetahuan pemanggil.
 - Dampak ke kode: konstruktor `Aset` dan method private `wajibIsi` memakai `isBlank()`, tanpa trim atau uppercase.
 - Tes yang membuktikan: `Minggu02AsetTest.menyimpanKodeDanNamaDenganNilaiAwal` dan `Minggu02AsetTest.kodeKosongDitolak`.
+  
+## A-09: rumus denda progresif
+- Pertanyaan: Bagaimana denda dihitung bila keterlambatan makin lama makin berat?
+- Keputusan: 7 hari pertama memakai tarif biasa (sama dengan DendaFlat). Mulai hari ke-8, setiap hari tambahan dikenai 2 kali tarif biasa.
+- Alasan: Sederhana dan mudah dijelaskan. Keterlambatan singkat tidak langsung dihukum berat, tetapi peminjam yang membiarkan aset berminggu-minggu membayar lebih mahal.
+- Dampak ke kode: `DendaProgresif.hitung` memakai `aset.hitungDenda(...)` sebagai tarif biasa, sehingga pengali Ruang 1x, Laptop 2x, dan AlatLab 4x serta tarif varian ikut terpakai.
+- Tes yang membuktikan: `Minggu05AbstraksiTest.dendaProgresifMemenuhiSyaratMinimal`. 
